@@ -54,6 +54,20 @@
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
+
+  /* ---- 集成对齐 token（浅色）：供卡片/地图等组件消费，补齐跨组件命名 ---- */
+  --color-card-bg: #ffffff; /* 卡片表面（不透明），文本主色于其上 ≈16:1 */
+  --card-radius: 16px;
+  --card-shadow: 0 2px 8px rgba(16, 24, 40, 0.08),
+    0 1px 2px rgba(16, 24, 40, 0.06);
+  --color-surface-strong: rgba(16, 24, 40, 0.06); /* 控件轨道/次级填充 */
+  --color-accent-strong: #1d4ed8; /* 强调按钮 hover 底，on-accent 白字 ≈6.9:1 */
+  --color-on-accent: #ffffff; /* 强调底上的文字 */
+  --color-map-surface: #dde5ee; /* 地图底图（= map-bg） */
+  --color-map-road: #b9c5d6; /* 路网线（= map-line） */
+  --color-map-overlay-bg: rgba(255, 255, 255, 0.9); /* 地图浮层底，正文其上达 AA */
+  --color-map-destination: #d1382d; /* 终点标记（浅底上可辨） */
+  --color-map-waypoint: #b45309; /* 途经点标记 */
 }
 
 /* ===== 深色主题 ===== */
@@ -92,6 +106,20 @@
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
+
+  /* ---- 集成对齐 token（深色）：卡片/地图等改用深色表面，浅色文本方可读 ---- */
+  --color-card-bg: #10151f; /* 卡片表面（不透明），文本主色于其上 ≈15:1 */
+  --card-radius: 16px;
+  --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.45),
+    0 1px 2px rgba(0, 0, 0, 0.4);
+  --color-surface-strong: rgba(255, 255, 255, 0.08);
+  --color-accent-strong: #6da0ff; /* 强调按钮 hover 底，on-accent 深字 ≈6:1 */
+  --color-on-accent: #05070c; /* 强调底上的文字（深色主题反相） */
+  --color-map-surface: #0b1220; /* 地图底图（= map-bg，深色） */
+  --color-map-road: #223049; /* 路网线（= map-line，深色） */
+  --color-map-overlay-bg: rgba(16, 21, 31, 0.9); /* 地图浮层底（深色半透明） */
+  --color-map-destination: #f87171; /* 终点标记（深底上可辨） */
+  --color-map-waypoint: #fbbf24; /* 途经点标记 */
 }
 
 /*
@@ -131,5 +159,19 @@
     --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.45),
       0 1px 2px rgba(0, 0, 0, 0.4);
     --shadow-elevated: 0 10px 30px rgba(0, 0, 0, 0.55);
+
+    /* 集成对齐 token（深色兜底，与 dark 块保持一致） */
+    --color-card-bg: #10151f;
+    --card-radius: 16px;
+    --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.45),
+      0 1px 2px rgba(0, 0, 0, 0.4);
+    --color-surface-strong: rgba(255, 255, 255, 0.08);
+    --color-accent-strong: #6da0ff;
+    --color-on-accent: #05070c;
+    --color-map-surface: #0b1220;
+    --color-map-road: #223049;
+    --color-map-overlay-bg: rgba(16, 21, 31, 0.9);
+    --color-map-destination: #f87171;
+    --color-map-waypoint: #fbbf24;
   }
 }

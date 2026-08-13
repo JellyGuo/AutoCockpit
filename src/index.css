@@ -18,8 +18,8 @@ body {
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
     "PingFang SC", "Microsoft YaHei", sans-serif;
-  /* 脚手架阶段的中性底色，主题系统由后续任务接入 */
-  background: #05070c;
-  color: #e8ecf4;
+  /* 底色与文字取自主题 CSS 变量，随日/夜主题整页切换 */
+  background: var(--color-bg, #05070c);
+  color: var(--color-text-primary, #e8ecf4);
   overflow: hidden;
 }
