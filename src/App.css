@@ -1,0 +1,74 @@
+/* 视口层：居中承载 16:9 舞台 */
+.cockpit-viewport {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+ * 舞台层：锁定 16:9 宽高比且不变形。
+ * 通过 min() 取“按宽算高”和“按高算宽”的较小值，
+ * 保证在任意视口下都完整贴合且保持比例。
+ */
+.cockpit-stage {
+  aspect-ratio: 16 / 9;
+  width: min(100vw, calc(100vh * 16 / 9));
+  height: min(100vh, calc(100vw * 9 / 16));
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  background: #0b1018;
+}
+
+/* 左窄栏：竖向卡片区 */
+.cockpit-sidebar {
+  flex: 0 0 26%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+}
+
+/* 右宽栏：地图区 */
+.cockpit-map {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  padding: 2%;
+  padding-left: 0;
+}
+
+/* 通用占位块 */
+.placeholder {
+  flex: 1 1 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border: 2px dashed rgba(160, 180, 210, 0.35);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.placeholder--cards {
+  background: rgba(120, 150, 200, 0.08);
+}
+
+.placeholder--map {
+  background: rgba(90, 160, 140, 0.08);
+}
+
+.placeholder__label {
+  font-size: clamp(14px, 1.6vw, 22px);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.placeholder__hint {
+  font-size: clamp(11px, 1vw, 14px);
+  opacity: 0.7;
+}
