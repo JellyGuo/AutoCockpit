@@ -1,0 +1,174 @@
+/*
+ * 空调控制卡样式。
+ * 全部取色自主题 CSS 变量（由日夜双主题系统统一定义）；
+ * 为在主题变量缺失时仍保持日夜可读，var() 均带兜底值。
+ */
+.climate-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border-radius: var(--card-radius, 16px);
+  background: var(--color-card-bg, rgba(255, 255, 255, 0.9));
+  color: var(--color-text-primary, #1a1c1f);
+  box-shadow: var(--card-shadow, 0 4px 16px rgba(0, 0, 0, 0.12));
+}
+
+.climate-card__header {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--color-text-secondary, #4a4f57);
+}
+
+.climate-card__temp {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.climate-card__temp-value {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-accent, #2f6df6);
+  font-variant-numeric: tabular-nums;
+}
+
+.climate-card__temp-unit {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-text-secondary, #4a4f57);
+}
+
+.climate-card__step-btn {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  font-size: 26px;
+  line-height: 1;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--color-border, rgba(0, 0, 0, 0.16));
+  border-radius: 50%;
+  background: var(--color-surface, rgba(0, 0, 0, 0.04));
+  color: var(--color-text-primary, #1a1c1f);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.climate-card__step-btn:hover:not(:disabled) {
+  background: var(--color-accent, #2f6df6);
+  color: var(--color-on-accent, #ffffff);
+}
+
+.climate-card__step-btn:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+.climate-card__step-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.climate-card__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.climate-card__control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.climate-card__control-label {
+  font-size: 14px;
+  color: var(--color-text-secondary, #4a4f57);
+}
+
+.climate-card__control-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.climate-card__mini-btn {
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  border: 1px solid var(--color-border, rgba(0, 0, 0, 0.16));
+  border-radius: 50%;
+  background: var(--color-surface, rgba(0, 0, 0, 0.04));
+  color: var(--color-text-primary, #1a1c1f);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.climate-card__mini-btn:hover:not(:disabled) {
+  background: var(--color-accent, #2f6df6);
+  color: var(--color-on-accent, #ffffff);
+}
+
+.climate-card__mini-btn:active:not(:disabled) {
+  transform: scale(0.9);
+}
+
+.climate-card__mini-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.climate-card__fan-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 22px;
+}
+
+.climate-card__fan-bar {
+  width: 6px;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--color-border, rgba(0, 0, 0, 0.16));
+  transition: background 0.15s ease;
+}
+
+.climate-card__fan-bar--on {
+  background: var(--color-accent, #2f6df6);
+}
+
+.climate-card__mode-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 8px 12px;
+  cursor: pointer;
+  border: 1px solid var(--color-border, rgba(0, 0, 0, 0.16));
+  border-radius: var(--card-radius, 12px);
+  background: var(--color-surface, rgba(0, 0, 0, 0.04));
+  color: var(--color-text-primary, #1a1c1f);
+  transition: background 0.15s ease;
+}
+
+.climate-card__mode-btn:hover {
+  background: var(--color-surface-strong, rgba(0, 0, 0, 0.08));
+}
+
+.climate-card__mode-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-accent, #2f6df6);
+}
