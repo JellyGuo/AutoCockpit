@@ -1,0 +1,25 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    "PingFang SC", "Microsoft YaHei", sans-serif;
+  /* 底色与文字取自主题 CSS 变量，随日/夜主题整页切换 */
+  background: var(--color-bg, #05070c);
+  color: var(--color-text-primary, #e8ecf4);
+  overflow: hidden;
+}

@@ -1,0 +1,60 @@
+/*
+ * 车辆状态卡样式。
+ * 全部取色自主题 CSS 变量（由日夜双主题系统统一定义）；
+ * 为在主题变量缺失时仍保持日夜可读，var() 均带兜底值。
+ */
+.vehicle-status-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border-radius: var(--card-radius, 16px);
+  background: var(--color-card-bg, rgba(255, 255, 255, 0.9));
+  color: var(--color-text-primary, #1a1c1f);
+  box-shadow: var(--card-shadow, 0 4px 16px rgba(0, 0, 0, 0.12));
+}
+
+.vehicle-status-card__header {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--color-text-secondary, #4a4f57);
+}
+
+.vehicle-status-card__metrics {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 12px;
+}
+
+.vehicle-status-card__metric {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.vehicle-status-card__value {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-accent, #2f6df6);
+}
+
+.vehicle-status-card__unit {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary, #4a4f57);
+}
+
+.vehicle-status-card__label {
+  font-size: 14px;
+  color: var(--color-text-secondary, #4a4f57);
+}

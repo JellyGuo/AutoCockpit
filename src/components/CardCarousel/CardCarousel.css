@@ -1,0 +1,186 @@
+/*
+ * 左侧竖向信息卡片翻页容器样式。
+ * ------------------------------------------------------------------
+ * - 纵向填满左栏：根 flex 列布局，视口占满剩余高度，控件条固定在底部。
+ * - 卡片叠放于视口中，仅当前页可见；切换通过 .is-active 显隐 + 可选过渡。
+ * - 配色一律取自主题 CSS 变量（var(--token)），并提供中性兜底值，
+ *   使本组件在主题系统尚未接入时也能独立呈现。
+ */
+
+.card-carousel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  gap: clamp(6px, 1.4vh, 14px);
+}
+
+/* 卡片视口：占满剩余高度，承载叠放的卡片 */
+.card-carousel__viewport {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg, 20px);
+  /* 让滑动手势的指针位移不被浏览器滚动/缩放吞掉 */
+  touch-action: none;
+}
+
+/* 单张卡片（一页）：叠放铺满视口，默认隐藏 */
+.card-carousel__slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* 让接入的卡片子节点自然铺满 slide */
+.card-carousel__slide > * {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+}
+
+.card-carousel__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+/* ---- 可选增强项：切换过渡动画 ---- */
+.card-carousel__slide--animated {
+  transition: opacity 280ms ease;
+}
+.card-carousel__slide--animated.is-active.card-carousel__slide--next {
+  animation: card-carousel-in-next 300ms ease both;
+}
+.card-carousel__slide--animated.is-active.card-carousel__slide--prev {
+  animation: card-carousel-in-prev 300ms ease both;
+}
+
+@keyframes card-carousel-in-next {
+  from {
+    opacity: 0;
+    transform: translateY(8%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes card-carousel-in-prev {
+  from {
+    opacity: 0;
+    transform: translateY(-8%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 控件条：翻页按钮 + 分页指示器 */
+.card-carousel__controls {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(6px, 1vw, 12px);
+}
+
+/* 上一 / 下一 翻页按钮 */
+.card-carousel__nav {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(28px, 3.2vw, 40px);
+  height: clamp(28px, 3.2vw, 40px);
+  padding: 0;
+  font-size: clamp(18px, 2vw, 26px);
+  line-height: 1;
+  cursor: pointer;
+  color: var(--color-text-primary, #e8ecf4);
+  background: var(--color-surface, rgba(255, 255, 255, 0.06));
+  border: 1px solid var(--color-border, rgba(160, 180, 210, 0.35));
+  border-radius: 999px;
+  box-shadow: var(--shadow-card, none);
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.card-carousel__nav:hover:not(:disabled) {
+  color: var(--color-accent-contrast, #ffffff);
+  background: var(--color-accent, #2563eb);
+  border-color: var(--color-accent, #2563eb);
+}
+
+.card-carousel__nav:focus-visible {
+  outline: 2px solid var(--color-focus-ring, #4f8cff);
+  outline-offset: 2px;
+}
+
+.card-carousel__nav:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* 分页指示器（圆点） */
+.card-carousel__dots {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 0.9vw, 12px);
+}
+
+.card-carousel__dot {
+  width: clamp(8px, 0.9vw, 11px);
+  height: clamp(8px, 0.9vw, 11px);
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-border-strong, rgba(160, 180, 210, 0.45));
+  opacity: 0.6;
+  transition: background 160ms ease, opacity 160ms ease, transform 160ms ease;
+}
+
+.card-carousel__dot:hover {
+  opacity: 0.9;
+}
+
+.card-carousel__dot:focus-visible {
+  outline: 2px solid var(--color-focus-ring, #4f8cff);
+  outline-offset: 2px;
+}
+
+.card-carousel__dot.is-active {
+  opacity: 1;
+  background: var(--color-accent, #2563eb);
+  transform: scale(1.35);
+}
+
+/* 无卡片时的空容器仍保持占位高度 */
+.card-carousel--empty {
+  min-height: 0;
+}
+
+/* 尊重系统的减少动效偏好：关闭切换动画 */
+@media (prefers-reduced-motion: reduce) {
+  .card-carousel__slide--animated,
+  .card-carousel__slide--animated.is-active.card-carousel__slide--next,
+  .card-carousel__slide--animated.is-active.card-carousel__slide--prev {
+    transition: none;
+    animation: none;
+  }
+  .card-carousel__dot,
+  .card-carousel__nav {
+    transition: none;
+  }
+}

@@ -1,0 +1,54 @@
+/*
+ * 时间/天气卡样式。
+ * 全部取色自主题 CSS 变量（由日夜双主题系统统一定义）；
+ * 为在主题变量缺失时仍保持日夜可读，var() 均带兜底值。
+ */
+.time-weather-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border-radius: var(--card-radius, 16px);
+  background: var(--color-card-bg, rgba(255, 255, 255, 0.9));
+  color: var(--color-text-primary, #1a1c1f);
+  box-shadow: var(--card-shadow, 0 4px 16px rgba(0, 0, 0, 0.12));
+}
+
+.time-weather-card__time {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-text-primary, #1a1c1f);
+  font-variant-numeric: tabular-nums;
+}
+
+.time-weather-card__date {
+  font-size: 15px;
+  color: var(--color-text-secondary, #4a4f57);
+}
+
+.time-weather-card__weather {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.time-weather-card__weather-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.time-weather-card__weather-temp {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-accent, #2f6df6);
+}
+
+.time-weather-card__weather-desc {
+  font-size: 14px;
+  color: var(--color-text-secondary, #4a4f57);
+}

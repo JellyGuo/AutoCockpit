@@ -1,0 +1,43 @@
+/* 视口层：居中承载 16:9 舞台，底色取主题背景变量 */
+.cockpit-viewport {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg, #05070c);
+  color: var(--color-text-primary, #e8ecf4);
+}
+
+/*
+ * 舞台层：锁定 16:9 宽高比且不变形。
+ * 通过 min() 取“按宽算高”和“按高算宽”的较小值，
+ * 保证在任意视口下都完整贴合且保持比例。
+ */
+.cockpit-stage {
+  aspect-ratio: 16 / 9;
+  width: min(100vw, calc(100vh * 16 / 9));
+  height: min(100vh, calc(100vw * 9 / 16));
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  background: var(--color-bg, #05070c);
+}
+
+/* 左窄栏：竖向卡片翻页区 */
+.cockpit-sidebar {
+  flex: 0 0 26%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+}
+
+/* 右宽栏：地图区 */
+.cockpit-map {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  padding: 2%;
+  padding-left: 0;
+}
