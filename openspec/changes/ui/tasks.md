@@ -1,41 +1,41 @@
 # 任务清单
 
-- [ ] #1 工程脚手架与视觉基座（3 SP，优先级 high）
-  - 说明：React 18 + Vite + TS 工程；1920×1080 等比缩放容器 GlassScaler；程序化风景背景 SceneBackground；毛玻璃卡片基础样式与栅格布局。
+- [ ] #1 工程脚手架与基础布局骨架（3 SP，优先级 high）
+  - 说明：Vite + React + TS 初始化；配置 1920x1080 基准与等比缩放容器；建立 ScenicBackground 纯 CSS 渐变风景背景与全局样式变量。
   - 依赖：无
-  - 验收标准：工程可 npm install + npm run build 通过；页面以 1920×1080 为基准渲染，窗口缩放等比不破版；显示 CSS 程序化风景背景与 backdrop-filter 毛玻璃卡片。
+  - 验收标准：项目能 npm install 与 npm run dev 启动；页面以 1920x1080 基准渲染纯 CSS 渐变风景背景，无外部图片；视口偏离基准时等比缩放不错位。
 
-- [ ] #2 状态中枢 NapContext（3 SP，优先级 high）
-  - 说明：NapState 类型、初始默认值、reducer（座椅/氛围灯/音频/定时/场景动作）、Provider 与 hook。
+- [ ] #2 全局状态管理 NapModeStore（3 SP，优先级 high）
+  - 说明：Context + useReducer 实现 seat/ambient/audio/timer 四域状态与 actions；mock 数据；倒计时 interval。
   - 依赖：#1
-  - 验收标准：提供 NapState 类型与默认值；reducer 支持座椅/氛围灯/音频/定时/场景各类动作；Provider 与 useNap hook 可供组件订阅。
+  - 验收标准：提供统一 store，dispatch 可更新四域状态；mock 数据驱动，无网络请求；倒计时可驱动 timer.remainingMs。
 
-- [ ] #3 座椅调节卡片 SeatCard（2 SP，优先级 normal）
-  - 说明：靠背角度/腿托滑杆、加热开关、按摩档位；受控回写 NapContext。
-  - 依赖：#2
-  - 验收标准：拖动靠背/腿托滑杆实时更新数值并反映到界面；切换加热开关与按摩档位给出可见反馈。
+- [ ] #3 通用毛玻璃组件与触控控件（3 SP，优先级 normal）
+  - 说明：GlassCard、触控友好 Slider、ToggleGroup、IconButton、ColorSwatch（内联 SVG 图标，触控目标 ≥ 44px）。
+  - 依赖：#1
+  - 验收标准：GlassCard 为毛玻璃样式；Slider/ToggleGroup 支持触控（pointer）且目标尺寸 ≥ 44px；图标为内联 SVG。
 
-- [ ] #4 氛围灯卡片 AmbientLightCard（2 SP，优先级 normal）
-  - 说明：开关、色板、亮度滑杆、模式（静态/呼吸/流动）；联动背景光晕。
-  - 依赖：#2
-  - 验收标准：切换开关更新点亮状态并联动中央氛围区/背景光晕；选色/亮度/模式变更实时反映到界面视觉。
+- [ ] #4 座椅调节卡片（2 SP，优先级 normal）
+  - 说明：SeatCard：靠背角度、按摩开关/强度、加热档位，接入 store，实时反馈。
+  - 依赖：#2、#3
+  - 验收标准：拖动/点按靠背角度、切换按摩、切换加热档位均更新 store 并实时可见反馈。
 
-- [ ] #5 音乐/白噪音卡片 AudioCard（3 SP，优先级 normal）
-  - 说明：分类切换、曲目列表、播放/暂停、模拟进度（setInterval）、音量。
-  - 依赖：#2
-  - 验收标准：音乐/白噪音分类切换与选曲更新当前音源显示；播放/暂停切换状态，播放时进度条随时间模拟推进；音量可调。定时器卸载时清理。
+- [ ] #5 氛围灯卡片 + 背景光晕联动（3 SP，优先级 normal）
+  - 说明：AmbientCard：颜色/亮度/模式，接入 store；ScenicBackground 订阅 ambient.color 联动光晕。
+  - 依赖：#2、#3
+  - 验收标准：选色/调亮度/切模式更新 store；背景光晕与预览随颜色联动。
 
-- [ ] #6 定时唤醒卡片 TimerCard（2 SP，优先级 normal）
-  - 说明：时长预设、启用开关、模拟倒计时。
-  - 依赖：#2
-  - 验收标准：选时长预设并启用后显示对应倒计时并随时间递减；未启用时不显示递减。
+- [ ] #6 音乐 / 白噪音卡片（3 SP，优先级 normal）
+  - 说明：AudioCard：播放/暂停、曲目/场景切换、音量，接入 store。
+  - 依赖：#2、#3
+  - 验收标准：播放/暂停切换状态与按钮外观；切曲目/场景更新信息且播放状态一致；音量实时反映。
 
-- [ ] #7 顶栏与一键场景联动（3 SP，优先级 high）
-  - 说明：TopBar（时间 + 场景开关）；ENTER_NAP/EXIT_NAP 组合动作接线各控件默认联动；App 组装。
-  - 依赖：#3、#4、#5、#6
-  - 验收标准：点击进入小憩组合执行（放平座椅/呼吸暖光低亮/白噪音播放/定时启用）并标记 napping；点击退出恢复 active 与默认值；napping 态仍可单独微调。
+- [ ] #7 定时唤醒卡片 + 顶部倒计时徽标（3 SP，优先级 normal）
+  - 说明：TimerCard：预设时长/自定义时间、启动/取消、倒计时；顶部状态栏徽标同步。
+  - 依赖：#2、#3
+  - 验收标准：设置预设/自定义唤醒时间后显示剩余/目标时间；计时时倒计时持续更新；取消后清除并停止。
 
-- [ ] #8 单元测试与构建校验（2 SP，优先级 normal）
-  - 说明：Vitest + RTL：reducer 联动、进入/退出小憩组合动作、定时器递减；npm run build 通过。
-  - 依赖：#7
-  - 验收标准：Vitest 用例覆盖 reducer 关键联动与进入/退出小憩组合动作且全部通过；npm run build 通过。
+- [ ] #8 联动集成与测试验证（3 SP，优先级 high）
+  - 说明：NapScreen 组装全部卡片；Vitest + RTL 覆盖 reducer 联动与关键交互；npm run build 通过；手动核对布局无溢出与触控可用。
+  - 依赖：#4、#5、#6、#7
+  - 验收标准：NapScreen 展示全部卡片且布局无溢出；npm run build 通过；Vitest 用例覆盖 reducer 联动与关键控件交互且全绿。
