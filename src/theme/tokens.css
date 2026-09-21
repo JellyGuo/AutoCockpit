@@ -1,0 +1,35 @@
+/* 放松风格主题令牌（契约占位版本）
+ * 说明：主题令牌的权威实现属于任务 #2（视觉基础层）。此处按约定的 CSS 变量契约
+ * 提供最小可用版本，使香氛卡片可独立自测与构建；集成时以任务 #2 的权威令牌为准。
+ */
+:root {
+  /* 配色 */
+  --color-bg: #1c2b33;
+  --color-surface: rgba(255, 255, 255, 0.14);
+  --color-surface-strong: rgba(255, 255, 255, 0.24);
+  --color-border: rgba(255, 255, 255, 0.28);
+  --color-text: rgba(255, 255, 255, 0.95);
+  --color-text-dim: rgba(255, 255, 255, 0.62);
+  --color-accent: #6fd0a3;
+
+  /* 间距 */
+  --space-1: 6px;
+  --space-2: 12px;
+  --space-3: 18px;
+  --space-4: 24px;
+
+  /* 圆角 */
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+
+  /* 模糊度 */
+  --blur-glass: 18px;
+
+  /* 字体 */
+  --font-family: 'PingFang SC', 'Microsoft YaHei', system-ui, -apple-system, sans-serif;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 22px;
+  --font-size-xl: 30px;
+}
