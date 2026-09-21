@@ -1,0 +1,54 @@
+/**
+ * 放松风格主题令牌 —— CSS 自定义属性镜像。
+ *
+ * 与 `tokens.ts` 保持同一批令牌，组件样式通过 `var(--xxx)` 消费，实现「集中定义、组件引用」。
+ * 由脚手架在应用入口全局引入（如 main.ts `import './theme/theme.css'`）。
+ */
+:root {
+  /* 配色 */
+  --color-accent: #7fb8c4;
+  --color-accent-soft: #e6b8a2;
+  --color-text-primary: rgba(255, 255, 255, 0.92);
+  --color-text-secondary: rgba(255, 255, 255, 0.68);
+  --color-glass-fill: rgba(255, 255, 255, 0.14);
+  --color-glass-fill-strong: rgba(255, 255, 255, 0.22);
+  --color-glass-border: rgba(255, 255, 255, 0.28);
+  --color-shadow: rgba(16, 24, 40, 0.35);
+  --color-backdrop: #1b2431;
+
+  /* 间距 */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+
+  /* 圆角 */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  /* 毛玻璃模糊度 */
+  --blur-sm: 8px;
+  --blur-md: 16px;
+  --blur-lg: 24px;
+
+  /* 字体 */
+  --font-family: 'Inter', 'PingFang SC', 'Helvetica Neue', 'Segoe UI', system-ui,
+    -apple-system, sans-serif;
+  --font-size-sm: 14px;
+  --font-size-md: 18px;
+  --font-size-lg: 24px;
+  --font-size-xl: 36px;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height: 1.5;
+
+  /* 动效 */
+  --motion-fast: 180ms;
+  --motion-normal: 320ms;
+  --motion-crossfade: 900ms;
+  --motion-easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
