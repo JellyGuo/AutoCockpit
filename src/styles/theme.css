@@ -1,0 +1,17 @@
+/* 放松风格主题令牌（最小集，供本任务卡片使用；集成任务 #2/#9 可扩展/收敛） */
+:root {
+  --ac-radius-lg: 24px;
+  --ac-radius-md: 16px;
+  --ac-radius-sm: 10px;
+  --ac-blur: 18px;
+  --ac-glass-bg: rgba(255, 255, 255, 0.14);
+  --ac-glass-border: rgba(255, 255, 255, 0.28);
+  --ac-text: rgba(255, 255, 255, 0.96);
+  --ac-text-dim: rgba(255, 255, 255, 0.66);
+  --ac-accent: #7fd1c4;
+  --ac-accent-soft: rgba(127, 209, 196, 0.28);
+  --ac-space-sm: 8px;
+  --ac-space-md: 16px;
+  --ac-space-lg: 24px;
+  --ac-font: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
